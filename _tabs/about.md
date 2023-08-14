@@ -5,7 +5,10 @@ order: 4
 ---
 
 ## About me !!!
-* Student 
+* Student
+* Security reseacher 
 * CTF player
-* Love to Exploer in technologies
+* Love to Explore in technologies
 * Music lover  
+
+
