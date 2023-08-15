@@ -6,9 +6,9 @@ order: 4
 
 ## About me !!!
 * Student
-* Security reseacher 
-* CTF player
+* Security reseacher 👨‍💻
+* CTF player 🏳
 * Love to Explore in technologies
-* Music lover  
+* Music lover 🎶
 
 
