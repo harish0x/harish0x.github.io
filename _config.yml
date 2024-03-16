@@ -2,7 +2,7 @@
 title               : Harishankar-K
 description         : >-
                       Umm...playing with 0's and 1's 
-baseurl             : "harishankar.me"                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
+baseurl             : ""                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository          : harish0x/portfolio     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
 remote_theme        : harish0x/portfolio
 open_new_tab        : false                             # Opens external URLs in new tab (works for posts, projects and navbar only)
