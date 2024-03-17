@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Simple CI/CD from Github To AWS S3 for a snake game.">
+  <meta property="og:description" content="This blog is about simple CI/CD pipeline for snake game">
+  <meta property="og:image" content="https://media.licdn.com/dms/image/D5603AQFIIwKvjz7ShQ/profile-displayphoto-shrink_800_800/0/1707214943515?e=1716422400&v=beta&t=EqzCPUugImKfPEeIpYp93Fwm9bhA36t9Svat7uXynqM">
+
+  <title>Simple CI/CD from Github To AWS S3 for a snake game.</title>
+  <meta name="description" content="This blog is about simple CI/CD pipeline for snake game">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>Harishankar-K</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1><b>Simple CI/CD from Github To AWS S3 for a snake game.</b></h1>
+
+<p class="post-metadata text-muted">
+  13 March 2024 -  
+  <b>4 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#cloud">
+      <span class="tag badge badge-pill text-primary border border-primary">cloud</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#ci-cd">
+      <span class="tag badge badge-pill text-primary border border-primary">CI/CD</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#aws">
+      <span class="tag badge badge-pill text-primary border border-primary">AWS</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#s3">
+      <span class="tag badge badge-pill text-primary border border-primary">S3</span>
+    </a>
+    </p>
+
+<p>In this blog, we’re going to see how to create a simple CI/CD pipeline for our Snake Game.</p>
+
+<h3 id="stages">Stages</h3>
+<p><img src="/assets/img/snake-game/stage.png" alt="Stages" /></p>
+
+<h2 id="services-used">Services Used</h2>
+
+<ul>
+  <li><strong>GitHub Actions</strong></li>
+  <li><strong>AWS S3</strong></li>
+  <li><strong>IAM (Identity &amp; Access Management)</strong></li>
+</ul>
+
+<h3 id="github-actions">GitHub Actions</h3>
+<p>GitHub Actions is a platform that helps automate software development, Continuous Integration, and Continuous Delivery (CI/CD).</p>
+<ul>
+  <li><em>Other CI/CD tools: Jenkins, GitLab, AWS CodePipeline, Azure Pipeline</em></li>
+</ul>
+
+<h3 id="aws-s3">AWS S3</h3>
+<p>An Amazon S3 bucket is a public cloud storage container for objects stored in Amazon Simple Storage Service (S3). Buckets are similar to file folders and can be used to store data for a variety of use cases. In our project, we’re going to store our project files and access them publicly as a static website.</p>
+
+<h3 id="iam-identity--access-management">IAM (Identity &amp; Access Management)</h3>
+<p>AWS Identity and Access Management (IAM) is a web service that assists users in securely controlling access to AWS resources. In our project, we will be performing actions such as writing and removing files from our GitHub repository to an S3 bucket. Therefore, IAM is required to access our S3 bucket securely.</p>
+
+<p>Now, we need a Snake Game. Here is my repository; you can fork it if you need to practice:
+<a href="https://github.com/harish0x/AWS_Learning-CD-GithubtoS3">AWS_Learning-CI_CD-GithubtoS3</a></p>
+
+<p>Now, let’s create an S3 bucket.</p>
+
+<p>Login to your AWS console and navigate to the S3 service. Click on the “Create bucket” option.</p>
+
+<p>Select your AWS region and give a name to your bucket. Here, I’ve selected <strong>‘ap-south-1’</strong> as the AWS region and named the bucket <strong>‘my-snake-game’</strong>.
+<img src="/assets/img/snake-game/bucket01.png" alt="Bucket Image 1" /></p>
+
+<p>After that, in <strong>Object Ownership</strong>, select ACL enabled.</p>
+
+<p>Scroll down, and you’ll see <strong>‘Block Public Access settings for this bucket’</strong>. Click the checkbox to disable it because the bucket is going to be accessed by everyone, and click the <strong>acknowledge</strong> box below.
+<img src="/assets/img/snake-game/vdo1.gif" alt="Video 1" /></p>
+
+<p>Click the <strong>Create bucket</strong> button, and your bucket is now created.</p>
+
+<p>Now, click on the bucket that has been created. Navigate to <strong>Properties</strong>, scroll down to the last, and you’ll see <strong>Static website hosting</strong>. Click “Edit” and enable it.
+<img src="/assets/img/snake-game/iam.gif" alt="Video 2" /></p>
+
+<h2 id="creating-iam-user">Creating IAM User</h2>
+
+<p>Search for the IAM service in the AWS console and click on <strong>Create user</strong>.</p>
+
+<p>Give a name to your user.
+<img src="/assets/img/snake-game/createuser.png" alt="Image" /></p>
+
+<p>Click <strong>Next</strong>.</p>
+
+<p><img src="/assets/img/snake-game/bucket03.gif" alt="Video 3" /></p>
+
+<p>Click <strong>Attach policies directly</strong>, search for S3 permission policies, add the policy, click <strong>Next</strong>, and create a user. Now we’ve created the user.</p>
+
+<p>Now, we need an Access Key. Click on the “Create access key” button.
+<img src="/assets/img/snake-game/user-c.png" alt="Image" />
+After completing certain steps, copy and paste both the <strong>Access_key</strong> and <strong>Secret_access_key</strong> safely as we’re going to use them later.
+<img src="/assets/img/snake-game/key.png" alt="Image" /></p>
+
+<p>Now, we’re going to create a bucket policy to determine which user is accessing the bucket.</p>
+
+<p>Go to the S3 service, click on the bucket we created, navigate to the permission tab, click <strong>Edit Bucket Policy</strong> -&gt; <strong>Policy Generator</strong>.</p>
+
+<p>Select the following:</p>
+<ul>
+  <li>Step 1: <strong>Select Policy Type</strong> as <strong>S3 Bucket Policy</strong></li>
+  <li>Step 2: Here, the principal is <em>the user who is going to access this bucket</em>. Select their <strong>ARN</strong> and allow all actions. Next, paste the bucket’s <strong>ARN</strong> that the user is going to access. Click <strong>Add Statement</strong>.</li>
+  <li>Step 3: Generate the policy.</li>
+</ul>
+
+<p>Now, copy the generated policy and paste it in the S3 bucket policy and save it.
+<img src="/assets/img/snake-game/pol.gif" alt="Video Policy" /></p>
+
+<h4 id="now-lets-set-up-the-github-action">Now, let’s set up the GitHub action.</h4>
+<p><img src="/assets/img/snake-game/yml.png" alt="YAML" />
+From the forked repo, you can see the workflow <strong>deploys3.yml</strong>.</p>
+
+<p>It creates a workflow when you commit the code; when a <strong>push</strong> occurs in <strong>main</strong>, it declares the jobs below, which deploys the <code class="language-plaintext highlighter-rouge">ubuntu-latest</code> image and fetches the <strong>s3-sync-action</strong> script created by <a href="https://github.com/jakejarvis/s3-sync-action">jakejarvis</a>. You can read the script if you want.</p>
+
+<p>After that, you can see the <strong>env</strong> variable where our AWS credentials are going to be used:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AWS_S3_BUCKET: $
+AWS_ACCESS_KEY_ID: $
+AWS_SECRET_ACCESS_KEY: $ 
+</code></pre></div></div>
+
+<p>Now, we want to set our AWS credentials. Click on <strong>Settings</strong> -&gt; <strong>Secrets and Variables</strong>. There, you can add the env-var by clicking on new repository secret.
+<img src="/assets/img/snake-game/repo-sec.png" alt="Image" /></p>
+
+<ul>
+  <li>AWS_S3_BUCKET: name of the S3 bucket</li>
+  <li>AWS_ACCESS_KEY_ID: Access key that we created</li>
+  <li>AWS_SECRET_ACCESS_KEY: Secret key that we created</li>
+</ul>
+
+<p>Now, make a change in our Snake Game and check whether the deployment is working or not.</p>
+
+<p>After making a small change in Index.html, it starts its workflow.
+<img src="/assets/img/snake-game/dep.png" alt="Deployment" /></p>
+
+<p>You can see our workflow is working. Now check if the game is working or not.
+<img src="/assets/img/snake-game/snake.png" alt="Snake" />
+The game is working. Now, let’s check our S3.
+<img src="/assets/img/snake-game/s3.png" alt="S3" /></p>
+
+<p>Our file is in sync with S3 from GitHub, and our Snake Game is running successfully.</p>
+
+<h2 id="summary">Summary</h2>
+<ul>
+  <li>Learned how the CI/CD works</li>
+  <li>How we sync our code repo to S3</li>
+  <li>How to host a static website using S3</li>
+  <li>How GitHub action works</li>
+</ul>
+
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Harishankar-K</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:harishankar.amk@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/harihs0x"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/harishankark2"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div>
+
+ 
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>

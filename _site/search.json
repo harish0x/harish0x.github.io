@@ -1,19 +1,35 @@
 [
   
     {
-      "title"    : "What is version control?",
+      "title"    : "Simple CI/CD from Github To AWS S3 for a snake game.",
       "category" : "",
-      "tags"     : "Version Control",
-      "url"      : "/blog/what-is-version-control",
-      "date"     : "2016-02-09 00:00:00 +0530"
+      "tags"     : "cloud, CI/CD, AWS, S3",
+      "url"      : "/blog/Simple-CI-CD-Deploying-in-S3",
+      "date"     : "2024-03-13 00:00:00 +0530"
     } ,
   
     {
-      "title"    : "How to undo your git failure?",
+      "title"    : "APInotes",
       "category" : "",
-      "tags"     : "External Post, Git",
-      "url"      : "https://blog.usejournal.com/how-to-undo-your-git-failure-b76e31ecac74",
-      "date"     : "2015-09-25 00:00:00 +0530"
+      "tags"     : "study-notes, API",
+      "url"      : "/blog/APINotes",
+      "date"     : "2023-09-04 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "Dwan Machine(Linux machine)",
+      "category" : "",
+      "tags"     : "Secuirty, Machine, pentesting",
+      "url"      : "/blog/Dwan",
+      "date"     : "2023-08-14 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "Config node mcu",
+      "category" : "",
+      "tags"     : "IoT, Config",
+      "url"      : "/blog/NodeMcu",
+      "date"     : "2020-09-09 00:00:00 +0530"
     } 
   
 ]

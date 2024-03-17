@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="APInotes">
+  <meta property="og:description" content="study-notes of API">
+  <meta property="og:image" content="https://media.licdn.com/dms/image/D5603AQFIIwKvjz7ShQ/profile-displayphoto-shrink_800_800/0/1707214943515?e=1716422400&v=beta&t=EqzCPUugImKfPEeIpYp93Fwm9bhA36t9Svat7uXynqM">
+
+  <title>APInotes</title>
+  <meta name="description" content="study-notes of API">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>Harishankar-K</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1><b>APInotes</b></h1>
+
+<p class="post-metadata text-muted">
+  04 September 2023 -  
+  <b>2 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#study-notes">
+      <span class="tag badge badge-pill text-primary border border-primary">study-notes</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#api">
+      <span class="tag badge badge-pill text-primary border border-primary">API</span>
+    </a>
+    </p>
+
+<h1 id="api-design">API design</h1>
+
+<h1 id="common-api-style">common API style</h1>
+
+<ul>
+  <li>Tunnel style (SOAP)</li>
+  <li>URI Style(CURD)</li>
+  <li>Hypermedia style(REST)</li>
+  <li>Event-driven</li>
+  <li>GraphQL</li>
+  <li>gRPC</li>
+</ul>
+
+<h2 id="1tunnel-style-soapsimple-object-access-protocol">1.Tunnel-Style SOAP(Simple object Access Protocol)</h2>
+
+<ul>
+  <li>Expose as RPC-like interface and provides an interface description for binding</li>
+  <li>It uses an XML-Centric message format</li>
+  <li>Uses <strong>HTTP</strong> as a transport protocol for higher application level</li>
+</ul>
+
+<h2 id="protocol-stack-ws---">Protocol Stack (ws - *)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>WS-CDL</th>
+      <th>Collabration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>WS-BPEC</td>
+      <td>Business process</td>
+    </tr>
+    <tr>
+      <td>WSDL,Policy,UDDI,Inspection,Meta data</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>Security        Reliable Message     Transaction Coordinated</td>
+      <td>Quality of Services</td>
+    </tr>
+    <tr>
+      <td>SOAP(Logical messaging )                     Other Protocols</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>XML Encoding                                        other services</td>
+      <td>Transport and encoding</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="tunnel-styleadvantage-and-limitation">Tunnel Style:Advantage and Limitation</h2>
+
+<h3 id="advantage-">Advantage :</h3>
+
+<ul>
+  <li>Continues RPC line (Corba,Com/Dcom,etc)</li>
+  <li>good <em>tooling</em> for Publisher &amp; consumer</li>
+  <li>strong governance model for enterprise</li>
+</ul>
+
+<h3 id="limitation-">Limitation :</h3>
+
+<ul>
+  <li>stack dependencies (all or nothing )</li>
+  <li>xml-centric implementation</li>
+  <li>ignores <strong>HTTP</strong> features (caching,etc)</li>
+  <li>loss in popularity</li>
+</ul>
+
+<h1 id="2uri-style-curdcreate-readupdatedelete">2.URI Style :CURD(Create ,Read,Update,Delete)</h1>
+
+<ul>
+  <li>An object or resources -centric API</li>
+  <li>URI and query parameter are used to identify  and filter objects</li>
+  <li>CURD operation mapped to HTTP methods</li>
+</ul>
+
+<h2 id="uri-style-history">URI Style History</h2>
+
+<p><strong>1992</strong>(HTTP) ——&gt; <strong>1995</strong>(URI’S)——&gt; <strong>1998 (xml)</strong>——&gt; <strong>2001(Json)</strong></p>
+
+<h2 id="protocol-stack-">protocol stack :</h2>
+
+<ul>
+  <li>HTTP protocol -RFC 2616</li>
+  <li>URI For identification  - RFC 3986</li>
+  <li>MIME for media type - XML,JSON,CSV</li>
+</ul>
+
+<h3 id="common-implementation-model-">common implementation model :</h3>
+
+<ul>
+  <li>Focus on the object / entities</li>
+  <li>
+    <p>design public identifiers (URI)</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    
+  <span class="nl">https:</span><span class="c1">//{server}/{object}/{id}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Design query rule</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">?{</span><span class="n">name</span><span class="o">}={</span><span class="n">value</span><span class="o">}&amp;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>use HTTP methods as operation on entities</li>
+  <li>server serialize  internal object</li>
+  <li>client use URI to pass object</li>
+</ul>
+
+<h2 id="uri-style-advantage-and-disadvantage-">URI style advantage and disadvantage :</h2>
+
+<h3 id="advantage--1">Advantage :</h3>
+
+<ul>
+  <li>http path &amp; query is “well known “</li>
+  <li>object “tooling” is good</li>
+</ul>
+
+<h3 id="disadvantage">Disadvantage</h3>
+
+<ul>
+  <li>URI modeling is not std</li>
+  <li>HTTP method set is very small</li>
+  <li>may become “chatty”</li>
+</ul>
+
+<h1 id="3hypermedia-style-restrepresentational-state-transfer">3.Hypermedia style :Rest(Representational State Transfer)</h1>
+
+<ul>
+  <li>Expose a task-based interface often incorporate workflow or state machine</li>
+  <li>use media to describe link semantic, templates-based input and message structure</li>
+  <li>provides it’s own URI’s</li>
+</ul>
+
+<h2 id="protocol-stacks-">Protocol Stacks :</h2>
+
+<ul>
+  <li>relative inside the HTTP
+    <ul>
+      <li>HTTP</li>
+      <li>X/HTML</li>
+    </ul>
+  </li>
+  <li>Basic &amp; digest authentication</li>
+  <li>IANA
+    <ul>
+      <li>media type</li>
+      <li>link relation</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="advantage-and-disadvantage">Advantage and Disadvantage</h2>
+
+<h2 id="advantage--2">Advantage :</h2>
+
+<ul>
+  <li>Media types can be customized</li>
+  <li>Growing body of guidance</li>
+  <li>Favour services that will last many years</li>
+</ul>
+
+<h2 id="disadvantage-1">Disadvantage:</h2>
+
+<ul>
+  <li>Poor “tooling” MSFI web API</li>
+  <li>Assumed to be “too hard”</li>
+  <li>limited use in public API</li>
+</ul>
+
+<h1 id="4event-driven-style">4.Event Driven style:</h1>
+
+<ul>
+  <li>Emphasis on event notification</li>
+  <li>
+    <p>Asynchoronous communication ,”Reactive “</p>
+
+    <p>## emerging style</p>
+
+    <ul>
+      <li>HTTP-Based technologies : webhook,websocket</li>
+      <li>Non-HTTP technologies: apache kaffa,AMQA popular with domain driven design (DDD) ,command query responsibility ,segregation CQRS,Microservices</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="5graphql-and-grpc">5.Graphql and gRPC</h1>
+
+<ul>
+  <li>Opensources query langanage for API</li>
+  <li>developed by Facebook</li>
+  <li>intended for fexiblity of argument</li>
+</ul>
+
+<h3 id="grpc">gRPC</h3>
+
+<ul>
+  <li>HTTP2-based protocol</li>
+  <li>originated at google</li>
+  <li>intended for high scale commnunication</li>
+</ul>
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Harishankar-K</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:harishankar.amk@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/harihs0x"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/harishankark2"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div>
+
+ 
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>
