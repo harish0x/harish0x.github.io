@@ -1,9 +1,9 @@
 ---
 title : Unminify_write_up
 tags: [PicoCTF, Web, Security]
-style: fill
 comment: true
-color: info
+style: border
+color: dark
 description: Unminify-writeUp_web_easy.
 ---
 

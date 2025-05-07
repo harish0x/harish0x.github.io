@@ -1,8 +1,8 @@
 ---
 title : Simple CI/CD from Github To AWS S3 for a snake game.
 tags: [cloud, CI/CD,AWS,S3]
-style: fill
-color: primary
+style: border
+color: dark
 description: This blog is about simple CI/CD pipeline for snake game.
 
 ---
