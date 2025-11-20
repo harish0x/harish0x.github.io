@@ -1,0 +1,65 @@
+[
+    {
+        "id": "amos-malware",
+        "title": "Atomic macOS Stealer (AMOS)",
+        "date": "2025-09-15",
+        "summary": "Analysis of the Atomic macOS Stealer malware.",
+        "filename": "AMOS-Malware.md"
+    },
+    {
+        "id": "cve-2025-44108",
+        "title": "CVE-2025-44108",
+        "date": "2025-05-16",
+        "summary": "Details and analysis of CVE-2025-44108.",
+        "filename": "CVE-2025-44108.md"
+    },
+    {
+        "id": "picoctf-decode",
+        "title": "WebDecode-Write-Up",
+        "date": "2025-05-07",
+        "summary": "Write-up for the PicoCTF WebDecode challenge.",
+        "filename": "PicoCTF-Decode.md"
+    },
+    {
+        "id": "cve-2025-29602",
+        "title": "CVE-2025-29602",
+        "date": "2025-05-07",
+        "summary": "Details and analysis of CVE-2025-29602.",
+        "filename": "CVE-2025-29602.md"
+    },
+    {
+        "id": "picoctf-unminify",
+        "title": "Unminify_write_up",
+        "date": "2025-02-03",
+        "summary": "Write-up for the PicoCTF Unminify challenge.",
+        "filename": "PicoCTF-Unminify.md"
+    },
+    {
+        "id": "simple-ci-cd",
+        "title": "Simple CI/CD from Github To AWS S3",
+        "date": "2024-03-13",
+        "summary": "Deploying a snake game using GitHub Actions and AWS S3.",
+        "filename": "Simple-CI-CD-Deploying-in-S3.md"
+    },
+    {
+        "id": "api-notes",
+        "title": "APInotes",
+        "date": "2023-09-04",
+        "summary": "Study notes on API security and testing.",
+        "filename": "APINotes.md"
+    },
+    {
+        "id": "dwan-machine",
+        "title": "Dwan Machine (Linux)",
+        "date": "2023-08-14",
+        "summary": "Pentesting walkthrough for the Dwan machine.",
+        "filename": "Dwan.md"
+    },
+    {
+        "id": "nodemcu-config",
+        "title": "Config NodeMCU",
+        "date": "2020-09-09",
+        "summary": "Configuration guide for NodeMCU IoT devices.",
+        "filename": "NodeMcu.md"
+    }
+]
