@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchPosts() {
     try {
-        const response = await fetch('posts.json');
-        if (!response.ok) throw new Error('Failed to load posts list');
+        const postsUrl = new URL('posts.json', window.location.href).href;
+        console.log('Attempting to fetch posts from:', postsUrl);
+        const response = await fetch(postsUrl);
+        if (!response.ok) throw new Error(`Failed to load posts list: ${response.status} ${response.statusText}`);
 
         const posts = await response.json();
         const blogList = document.getElementById('blog-list');
@@ -59,8 +61,10 @@ async function loadPost() {
         }
 
         // 2. Fetch the markdown content
-        const mdResponse = await fetch(`posts/${post.filename}`);
-        if (!mdResponse.ok) throw new Error('Failed to load post content');
+        const postUrl = new URL(`posts/${post.filename}`, window.location.href).href;
+        console.log('Attempting to fetch post content from:', postUrl);
+        const mdResponse = await fetch(postUrl);
+        if (!mdResponse.ok) throw new Error(`Failed to load post content: ${mdResponse.status} ${mdResponse.statusText}`);
 
         const markdown = await mdResponse.text();
 
