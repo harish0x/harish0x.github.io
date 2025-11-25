@@ -1,9 +1,9 @@
 [
     {
         "id": "amos-malware",
-        "title": "Atomic macOS Stealer (AMOS)",
+        "title": "Atomic macOS Stealer (AMOS) Part 1",
         "date": "2025-09-15",
-        "summary": "Analysis of the Atomic macOS Stealer malware.",
+        "summary": "A Ovierview About new forms AMOS which is have faced.",
         "filename": "AMOS-Malware.md"
     },
     {
